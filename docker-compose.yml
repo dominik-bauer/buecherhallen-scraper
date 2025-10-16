@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  fastapi-app:
+    build: .
+    image: fastapi-minimal:latest
+    container_name: fastapi-minimal
+    restart: unless-stopped
+    ports:
+      - "8282:8080"  # Host-Port : Container-Port
+    environment:
+      APP_VAR1: "${APP_VAR1}"  # TrueNAS SCALE fragt den Benutzer beim Deployment
+      APP_VAR2: "${APP_VAR2}"
+      APP_VAR3: "${APP_VAR3}"
