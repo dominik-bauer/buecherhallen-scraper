@@ -1,14 +1,15 @@
 version: "3.9"
-
 services:
-  fastapi-app:
-    build: .
-    image: fastapi-minimal:latest
-    container_name: fastapi-minimal
+  buecherhallen-scraper:
+    build:
+      context: https://github.com/dominik-bauer/buecherhallen-scraper.git#main
+      dockerfile: Dockerfile
+    container_name: buecherhallen-scraper
     restart: unless-stopped
     ports:
-      - "8282:8080"  # Host-Port : Container-Port
+      - 8282:8080 # Host-Port : Container-Port
     environment:
-      APP_VAR1: "${APP_VAR1}"  # TrueNAS SCALE fragt den Benutzer beim Deployment
-      APP_VAR2: "${APP_VAR2}"
-      APP_VAR3: "${APP_VAR3}"
+      APP_VAR1: null
+      APP_VAR2: null
+      APP_VAR3: null
+networks: {}
