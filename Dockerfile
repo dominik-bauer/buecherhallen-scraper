@@ -7,8 +7,9 @@ RUN pip install --no-cache-dir uv
 WORKDIR /app
 
 COPY pyproject.toml ./
+COPY uv.lock ./
 
-RUN uv sync
+RUN uv sync --frozen --no-dev
 
 FROM python:3.13-slim-bookworm AS production
 
