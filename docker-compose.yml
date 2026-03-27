@@ -6,7 +6,7 @@ services:
     container_name: buecherhallen-scraper
     restart: unless-stopped
     ports:
-      - 8282:8080 # Host-Port : Container-Port
+      - 8321:8080 # Host-Port : Container-Port
     environment:
       APP_VAR1: null
       APP_VAR2: null

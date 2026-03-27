@@ -1,8 +1,6 @@
 FROM python:3.13-slim-bookworm AS builder
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --no-install-recommends -y build-essential && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir uv
 
@@ -15,9 +13,7 @@ RUN uv sync
 FROM python:3.13-slim-bookworm AS production
 
 # Install runtime dependencies
-RUN apt-get update && apt-get install --no-install-recommends -y \
-    gosu \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install --no-install-recommends -y gosu && rm -rf /var/lib/apt/lists/*
 
 # Create non-root user
 RUN groupadd --gid 1000 appuser && \
